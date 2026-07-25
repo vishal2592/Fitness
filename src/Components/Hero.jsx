@@ -5,7 +5,7 @@ import { FaAngleDoubleRight } from "react-icons/fa";
 
 const Hero = () => {
   return (
-    <section className="relative h-[560px] md:min-h-screen flex items-center overflow-hidden bg-black">
+    <section className="relative h-[420px] md:min-h-screen flex items-center overflow-hidden bg-black">
       {/* Background Image – अब <picture> से responsive */}
       <picture className="absolute inset-0 w-full h-full z-0">
         {/* मोबाइल (max-width: 768px) पर HeroImage2 */}
@@ -24,10 +24,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
 
       {/* Content */}
-      <div className="relative z-20 container mx-auto px-6 md:px-12 lg:px-20 py-2 md:py-14">
+      <div className="relative z-20 container mx-auto px-6 md:px-12 lg:px-20 py-2 md:py-14 pt-14">
         <div className="max-w-2xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-red-600/20 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 mb-3 md:mb-4">
+          <div className="inline-flex items-center gap-2 bg-red-600/20 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 mb-1 md:mb-3">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
             <span className="text-red-400 text-sm font-medium uppercase tracking-wider">
               New Season
@@ -35,7 +35,7 @@ const Hero = () => {
           </div>
 
           {/* Heading */}
-          <h1 className="text-3xl md:text-6xl lg:text-[85px] font-extrabold text-white leading-tight mb-3 md:mb-4">
+          <h1 className="text-3xl md:text-6xl lg:text-[85px] font-extrabold text-white leading-tight mb-1 md:mb-4">
             Transform Your
             <span className="block bg-clip-text text-[#8ED51F]">
               Body & Mind
@@ -43,7 +43,7 @@ const Hero = () => {
           </h1>
 
           {/* Subheading */}
-          <p className="text-gray-300 text-sm md:text-lg lg:text-xl max-w-sm mb-3 md:mb-8 leading-relaxed">
+          <p className="text-gray-300 text-sm md:text-lg lg:text-xl max-w-sm mb-1 md:mb-8 leading-relaxed">
             Join the ultimate fitness community. Get personalized
             training, state-of-the-art equipment, and the motivation
             you need to crush your goals.
@@ -62,7 +62,7 @@ const Hero = () => {
           </div>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-6 md:gap-8 mt-4 md:mt-12 pt-3 md:pt-8 border-t border-white/10">
+          <div className="flex flex-wrap gap-6 md:gap-8 mt-4 md:mt-12 pt-1.5 md:pt-8 border-t border-white/10">
             <div>
               <p className="text-2xl md:text-3xl font-bold text-white">500+</p>
               <p className="text-gray-400 text-[10px] md:text-sm uppercase tracking-wider">

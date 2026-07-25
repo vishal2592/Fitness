@@ -77,21 +77,21 @@ const CategorySection = () => {
   ];
 
   return (
-    <section className="py-6 bg-[#0a0a0a]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-0.5 md:py-2 bg-[#0a0a0a]">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header - Centered with Lines on Both Sides */}
         <div className="mb-4">
           {/* Top Row: Line - Our Categories - Line */}
           <div className="flex items-center gap-4 mb-2">
             {/* Left Line - Light to Clear with Glow */}
             <div className="flex-1 h-0.5 bg-gradient-to-r from-green-500/10 via-green-500/50 to-green-500 shadow-[0_0_10px_rgba(34,197,94,0.2)]"></div>
-            
+
             <span className="text-green-500 text-sm font-semibold uppercase tracking-wider whitespace-nowrap px-2">Our Categories</span>
-            
+
             {/* Right Line - Clear to Light with Glow */}
             <div className="flex-1 h-0.5 bg-gradient-to-l from-green-500/10 via-green-500/50 to-green-500 shadow-[0_0_10px_rgba(34,197,94,0.2)]"></div>
           </div>
-          
+
           {/* Second Row: CHOOSE YOUR WORKOUT */}
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center">
             CHOOSE YOUR <span className="text-green-500">WORKOUT</span>
@@ -118,7 +118,7 @@ const CategorySection = () => {
             }}
             breakpoints={{
               480: {
-                slidesPerView: 1.2,
+                slidesPerView: 1,
                 spaceBetween: 15,
               },
               640: {
@@ -126,15 +126,15 @@ const CategorySection = () => {
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 2.2,
+                slidesPerView: 3,
                 spaceBetween: 20,
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 25,
               },
               1280: {
-                slidesPerView: 3.5,
+                slidesPerView: 4,
                 spaceBetween: 25,
               },
             }}
@@ -146,7 +146,7 @@ const CategorySection = () => {
                   {/* Image Container - Clickable */}
                   <Link to={`/category/${item.id}`} className="block">
                     <div className="relative h-[220px] sm:h-[250px] md:h-[280px] overflow-hidden">
-                      <img 
+                      <img
                         src={item.image}
                         alt={item.title}
                         className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
@@ -154,12 +154,12 @@ const CategorySection = () => {
                           e.target.src = 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80';
                         }}
                       />
-                      
+
                       {/* Discount Badge - Top Left */}
                       <div className="absolute top-4 left-4 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg shadow-green-500/30">
                         {item.discount}
                       </div>
-                      
+
                       {/* Overlay with arrow on hover */}
                       <div className="absolute inset-0 bg-gradient-to-t from-green-500/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                         <div className="bg-green-500/90 rounded-full p-3 transform scale-0 group-hover:scale-100 transition-transform duration-500">
@@ -185,13 +185,13 @@ const CategorySection = () => {
                         <span className="text-white text-xs font-semibold">{item.rating}</span>
                       </div>
                     </div>
-                    
+
                     <p className="text-gray-400 text-sm sm:text-base font-medium">
                       {item.description}
                     </p>
-                    
+
                     {/* Learn More Link */}
-                    <Link 
+                    <Link
                       to={`/category/${item.id}`}
                       className="inline-flex items-center gap-2 text-green-500 font-semibold text-sm  hover:text-green-400 transition-colors group/link"
                     >
