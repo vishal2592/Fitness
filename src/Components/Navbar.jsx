@@ -63,26 +63,25 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-[#0a0a0a] shadow-2xl shadow-green-500/10 py-2' 
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
+          ? 'bg-[#0a0a0a] shadow-2xl shadow-green-500/10 py-2'
           : 'bg-[#0a0a0a]/95 backdrop-blur-md py-2'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        }`}>
+        <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Animated Logo */}
             <Link to="/" className="flex items-center space-x-3 group relative">
               {/* Animated Glow Effect */}
               <div className="absolute -inset-3 bg-green-500/20 blur-2xl rounded-full animate-pulse-slow opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              
+
               {/* Logo Icon with Animation */}
               <div className="relative">
                 <div className="absolute inset-0 bg-green-500 blur-xl opacity-30 group-hover:opacity-60 transition-opacity duration-500 animate-spin-slow"></div>
                 <svg className="w-9 h-9 text-green-500 relative z-10 animate-bounce-slow" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15L17 12.23l-4-2.37V7z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15L17 12.23l-4-2.37V7z" />
                 </svg>
               </div>
-              
+
               {/* Brand Text */}
               <div className="flex flex-col leading-tight relative">
                 <span className="text-xl font-bold tracking-wider text-white group-hover:text-green-400 transition-colors duration-300">
@@ -103,11 +102,10 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${
-                      active 
-                        ? 'text-green-500' 
+                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 relative ${active
+                        ? 'text-green-500'
                         : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
+                      }`}
                   >
                     <span className="relative z-10">{link.name}</span>
                     {active && (
@@ -127,7 +125,7 @@ const Navbar = () => {
             {/* Right Side */}
             <div className="flex items-center space-x-3 sm:space-x-4">
               {/* Login Button */}
-              <Link 
+              <Link
                 to="/login"
                 className="hidden sm:flex items-center space-x-2 px-6 py-1.5 rounded-full bg-green-500 hover:bg-green-600 text-white font-semibold transition-all duration-300 hover:scale-105 shadow-lg shadow-green-500/30 hover:shadow-green-500/50"
               >
@@ -138,7 +136,7 @@ const Navbar = () => {
               </Link>
 
               {/* Login Icon for Mobile */}
-              <Link 
+              <Link
                 to="/login"
                 className="sm:hidden text-gray-300 hover:text-green-500 transition-colors"
               >
@@ -148,21 +146,18 @@ const Navbar = () => {
               </Link>
 
               {/* Mobile Toggle */}
-              <button 
+              <button
                 onClick={toggleMenu}
                 className="lg:hidden text-white hover:text-green-500 transition-colors p-2"
                 aria-label="Toggle menu"
               >
                 <div className="w-6 h-5 relative flex flex-col justify-between">
-                  <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${
-                    isOpen ? 'rotate-45 translate-y-2 bg-green-500' : ''
-                  }`}></span>
-                  <span className={`w-full h-0.5 bg-current transition-all duration-300 ${
-                    isOpen ? 'opacity-0' : ''
-                  }`}></span>
-                  <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${
-                    isOpen ? '-rotate-45 -translate-y-2 bg-green-500' : ''
-                  }`}></span>
+                  <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2 bg-green-500' : ''
+                    }`}></span>
+                  <span className={`w-full h-0.5 bg-current transition-all duration-300 ${isOpen ? 'opacity-0' : ''
+                    }`}></span>
+                  <span className={`w-full h-0.5 bg-current transform transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2 bg-green-500' : ''
+                    }`}></span>
                 </div>
               </button>
             </div>
@@ -171,19 +166,17 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Menu - Slides from Left */}
-      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${
-        isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      }`}>
-        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closeMenu}></div>
-        
-        <div className={`absolute top-0 left-0 w-80 h-full bg-[#0a0a0a] shadow-2xl shadow-green-500/20 transform transition-all duration-500 ease-out ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
+      <div className={`fixed inset-0 z-40 lg:hidden transition-all duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={closeMenu}></div>
+
+        <div className={`absolute top-0 left-0 w-80 h-full bg-[#0a0a0a] shadow-2xl shadow-green-500/20 transform transition-all duration-500 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}>
           <div className="p-6 border-b border-green-500/20">
             <div className="flex items-center justify-between">
               <Link to="/" onClick={closeMenu} className="flex items-center space-x-2 group">
                 <svg className="w-8 h-8 text-green-500 animate-bounce-slow" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15L17 12.23l-4-2.37V7z"/>
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15L17 12.23l-4-2.37V7z" />
                 </svg>
                 <div className="flex flex-col leading-tight">
                   <span className="text-xl font-bold tracking-wider text-white group-hover:text-green-400 transition-colors">
@@ -210,15 +203,13 @@ const Navbar = () => {
                   key={link.name}
                   to={link.path}
                   onClick={closeMenu}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                    active 
-                      ? 'bg-green-500/20 text-green-500 shadow-lg shadow-green-500/10' 
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${active
+                      ? 'bg-green-500/20 text-green-500 shadow-lg shadow-green-500/10'
                       : 'text-gray-300 hover:text-white hover:bg-white/5'
-                  }`}
+                    }`}
                 >
-                  <span className={`w-2 h-2 rounded-full transition-all ${
-                    active ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
-                  }`}></span>
+                  <span className={`w-2 h-2 rounded-full transition-all ${active ? 'bg-green-500 shadow-lg shadow-green-500/50' : 'bg-gray-600'
+                    }`}></span>
                   <span className="font-medium">{link.name}</span>
                   {active && (
                     <span className="ml-auto text-green-500">
@@ -232,8 +223,8 @@ const Navbar = () => {
             })}
 
             <div className="pt-6 mt-6 border-t border-green-500/20 space-y-3">
-              <Link 
-                to="/login" 
+              <Link
+                to="/login"
                 onClick={closeMenu}
                 className="flex items-center justify-center space-x-2 w-full py-3.5 rounded-xl bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg shadow-green-500/30"
               >
@@ -249,22 +240,22 @@ const Navbar = () => {
             <div className="flex justify-center space-x-6">
               <Link to="#" className="text-gray-400 hover:text-green-500 transition-colors duration-300 hover:scale-110 transform">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z" />
                 </svg>
               </Link>
               <Link to="#" className="text-gray-400 hover:text-green-500 transition-colors duration-300 hover:scale-110 transform">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                 </svg>
               </Link>
               <Link to="#" className="text-gray-400 hover:text-green-500 transition-colors duration-300 hover:scale-110 transform">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z"/>
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231z" />
                 </svg>
               </Link>
               <Link to="#" className="text-gray-400 hover:text-green-500 transition-colors duration-300 hover:scale-110 transform">
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
               </Link>
             </div>
