@@ -209,7 +209,7 @@ const CategorySection = () => {
       </div>
 
       {/* Custom Swiper Styles */}
-      <style jsx>{`
+      <style>{`
         .category-swiper {
           padding: 10px 0 50px 0;
         }

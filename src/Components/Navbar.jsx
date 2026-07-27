@@ -172,20 +172,12 @@ const Navbar = () => {
 
         <div className={`absolute top-0 left-0 w-80 h-full bg-[#0a0a0a] shadow-2xl shadow-lime-500/20 transform transition-all duration-500 ease-out ${isOpen ? 'translate-x-0' : '-translate-x-full'
           }`}>
-          <div className="p-6 border-b border-lime-500/20">
+          <div className="p-2 border-b border-lime-500/20">
             <div className="flex items-center justify-between">
               <Link to="/" onClick={closeMenu} className="flex items-center space-x-2 group">
                 <svg className="w-8 h-8 text-lime-500 animate-bounce-slow" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-13h-2v6l5.25 3.15L17 12.23l-4-2.37V7z" />
                 </svg>
-                <div className="flex flex-col leading-tight">
-                  <span className="text-xl font-bold tracking-wider text-white group-hover:text-lime-400 transition-colors">
-                    VITALIFY
-                  </span>
-                  <span className="text-[10px] tracking-[0.3em] text-lime-500 uppercase font-semibold">
-                    Fitness
-                  </span>
-                </div>
               </Link>
               <button onClick={closeMenu} className="text-white hover:text-lime-500 transition-colors">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +187,7 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="p-6 space-y-2">
+          <div className="p-4 space-y-2">
             {navLinks.map((link) => {
               const active = isActive(link.path);
               return (
@@ -264,7 +256,7 @@ const Navbar = () => {
       </div>
 
       {/* Custom Animations */}
-      <style jsx>{`
+      <style>{`
         @keyframes pulse-slow {
           0%, 100% { opacity: 0.3; transform: scale(1); }
           50% { opacity: 0.6; transform: scale(1.05); }

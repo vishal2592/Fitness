@@ -107,7 +107,7 @@ const TransformationPage = () => {
   ];
 
   return (
-    <section className="relative bg-gradient-to-br from-[#0a0c0f] via-[#0d0f12] to-[#0f1218] py-8 md:py-12 px-4 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#0a0c0f] via-[#0d0f12] to-[#0f1218] py-4 md:py-6 px-4 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-96 h-96 bg-lime-500/10 rounded-full blur-3xl animate-pulse" />
         <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-400/5 rounded-full blur-3xl animate-pulse delay-1000" />
@@ -116,7 +116,7 @@ const TransformationPage = () => {
 
       <div className="relative max-w-[90rem] mx-auto">
         {/* Header – responsive */}
-        <div className="text-center mb-8 md:mb-12">
+        <div className="text-center mb-4 md:mb-8">
           <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-[10px] md:text-sm tracking-[0.2em] px-4 md:px-5 py-2 rounded-full border border-lime-500/30 uppercase mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />

@@ -27,9 +27,9 @@ const Hero = () => {
       <div className="relative z-20 container mx-auto px-6 md:px-12 lg:px-20 py-2 md:py-14 pt-14">
         <div className="max-w-2xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-red-600/20 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 mb-1 md:mb-3">
+          <div className="inline-flex items-center gap-2 bg-red-600/20 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-1.5 md:py-2 mb-1 md:mb-3">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-            <span className="text-red-400 text-sm font-medium uppercase tracking-wider">
+            <span className="text-red-400 text-[12px] md:text-sm font-medium uppercase tracking-wider">
               New Season
             </span>
           </div>

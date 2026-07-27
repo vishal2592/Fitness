@@ -88,7 +88,7 @@ const ContactSection = () => {
 
       <div className="relative max-w-[90rem] mx-auto">
         {/* Header */}
-        <div className="text-center mb-4">
+        <div className="text-center mb-2 md:mb-4">
           <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
@@ -148,7 +148,7 @@ const ContactSection = () => {
             </p>
 
             {isSubmitted ? (
-              <div className="flex flex-col items-center justify-center py-12">
+              <div className="flex flex-col items-center justify-center py-8">
                 <div className="w-20 h-20 rounded-full bg-lime-500/20 flex items-center justify-center mb-4">
                   <FaCheckCircle className="text-5xl text-lime-400" />
                 </div>
@@ -258,10 +258,10 @@ const ContactSection = () => {
           </div>
 
           {/* Map & Social Section */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             {/* Map */}
-            <div className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-6 border border-white/5 hover:border-lime-400/30 transition-all duration-300">
-              <h3 className="text-xl font-bold text-white mb-4">Find Us Here</h3>
+            <div className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-3 border border-white/5 hover:border-lime-400/30 transition-all duration-300">
+              <h3 className="text-xl font-bold text-white mb-3">Find Us Here</h3>
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-[#0d0f12] border border-white/10">
                 <iframe
                   title="Gym Location"
@@ -276,8 +276,8 @@ const ContactSection = () => {
             </div>
 
             {/* Social Links */}
-            <div className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-6 border border-white/5 hover:border-lime-400/30 transition-all duration-300">
-              <h3 className="text-xl font-bold text-white mb-4">Connect With Us</h3>
+            <div className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-3 border border-white/5 hover:border-lime-400/30 transition-all duration-300">
+              <h3 className="text-xl font-bold text-white mb-2">Connect With Us</h3>
               <div className="flex flex-wrap gap-3">
                 <a
                   href="#"
