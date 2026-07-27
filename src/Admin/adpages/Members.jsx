@@ -15,27 +15,72 @@ import {
   Calendar,
   Phone,
   Award,
+  Mail,
 } from "lucide-react";
 
 const Members = () => {
-  // ─── Sample Data (20+ members for demo) ──────────────────
+  // ─── Sample Data ────────────────────────────────────────────
   const [members, setMembers] = useState([
-    { id: 1, name: "Rahul Sharma", phone: "+91 98765 43210", plan: "Annual", joinDate: "2025-01-15", expiryDate: "2026-01-14", status: "Active", image: "https://i.pravatar.cc/40?img=5" },
-    { id: 2, name: "Priya Singh", phone: "+91 98765 43211", plan: "Monthly", joinDate: "2025-11-01", expiryDate: "2025-12-01", status: "Active", image: "https://i.pravatar.cc/40?img=6" },
-    { id: 3, name: "Aman Verma", phone: "+91 98765 43212", plan: "Quarterly", joinDate: "2025-09-10", expiryDate: "2025-12-10", status: "Expired", image: "https://i.pravatar.cc/40?img=7" },
-    { id: 4, name: "Neha Gupta", phone: "+91 98765 43213", plan: "Annual", joinDate: "2025-03-20", expiryDate: "2026-03-19", status: "Active", image: "https://i.pravatar.cc/40?img=8" },
-    { id: 5, name: "Vikram Patel", phone: "+91 98765 43214", plan: "Half-Yearly", joinDate: "2025-08-05", expiryDate: "2026-02-05", status: "Active", image: "https://i.pravatar.cc/40?img=9" },
-    { id: 6, name: "Sneha Reddy", phone: "+91 98765 43215", plan: "Monthly", joinDate: "2025-10-15", expiryDate: "2025-11-15", status: "Expired", image: "https://i.pravatar.cc/40?img=10" },
-    { id: 7, name: "Amit Kumar", phone: "+91 98765 43216", plan: "Annual", joinDate: "2025-02-10", expiryDate: "2026-02-09", status: "Active", image: "https://i.pravatar.cc/40?img=11" },
-    { id: 8, name: "Pooja Jain", phone: "+91 98765 43217", plan: "Monthly", joinDate: "2025-10-20", expiryDate: "2025-11-20", status: "Active", image: "https://i.pravatar.cc/40?img=12" },
-    { id: 9, name: "Ravi Shankar", phone: "+91 98765 43218", plan: "Quarterly", joinDate: "2025-08-15", expiryDate: "2025-11-15", status: "Expired", image: "https://i.pravatar.cc/40?img=13" },
-    { id: 10, name: "Anjali Mehta", phone: "+91 98765 43219", plan: "Annual", joinDate: "2025-04-01", expiryDate: "2026-03-31", status: "Active", image: "https://i.pravatar.cc/40?img=14" },
-    { id: 11, name: "Gaurav Singh", phone: "+91 98765 43220", plan: "Half-Yearly", joinDate: "2025-07-01", expiryDate: "2026-01-01", status: "Active", image: "https://i.pravatar.cc/40?img=15" },
-    { id: 12, name: "Kavya Nair", phone: "+91 98765 43221", plan: "Monthly", joinDate: "2025-11-05", expiryDate: "2025-12-05", status: "Active", image: "https://i.pravatar.cc/40?img=16" },
-    { id: 13, name: "Deepak Joshi", phone: "+91 98765 43222", plan: "Annual", joinDate: "2025-01-20", expiryDate: "2026-01-19", status: "Active", image: "https://i.pravatar.cc/40?img=17" },
-    { id: 14, name: "Meera Iyer", phone: "+91 98765 43223", plan: "Quarterly", joinDate: "2025-09-10", expiryDate: "2025-12-10", status: "Expired", image: "https://i.pravatar.cc/40?img=18" },
-    { id: 15, name: "Arjun Reddy", phone: "+91 98765 43224", plan: "Monthly", joinDate: "2025-10-25", expiryDate: "2025-11-25", status: "Active", image: "https://i.pravatar.cc/40?img=19" },
-    { id: 16, name: "Sunita Kapoor", phone: "+91 98765 43225", plan: "Annual", joinDate: "2025-03-15", expiryDate: "2026-03-14", status: "Active", image: "https://i.pravatar.cc/40?img=20" },
+    {
+      id: 1,
+      name: "Rahul Sharma",
+      phone: "+91 98765 43210",
+      plan: "Annual",
+      joinDate: "2025-01-15",
+      expiryDate: "2026-01-14",
+      status: "Active",
+      image: "https://i.pravatar.cc/40?img=5",
+    },
+    {
+      id: 2,
+      name: "Priya Singh",
+      phone: "+91 98765 43211",
+      plan: "Monthly",
+      joinDate: "2025-11-01",
+      expiryDate: "2025-12-01",
+      status: "Active",
+      image: "https://i.pravatar.cc/40?img=6",
+    },
+    {
+      id: 3,
+      name: "Aman Verma",
+      phone: "+91 98765 43212",
+      plan: "Quarterly",
+      joinDate: "2025-09-10",
+      expiryDate: "2025-12-10",
+      status: "Expired",
+      image: "https://i.pravatar.cc/40?img=7",
+    },
+    {
+      id: 4,
+      name: "Neha Gupta",
+      phone: "+91 98765 43213",
+      plan: "Annual",
+      joinDate: "2025-03-20",
+      expiryDate: "2026-03-19",
+      status: "Active",
+      image: "https://i.pravatar.cc/40?img=8",
+    },
+    {
+      id: 5,
+      name: "Vikram Patel",
+      phone: "+91 98765 43214",
+      plan: "Half-Yearly",
+      joinDate: "2025-08-05",
+      expiryDate: "2026-02-05",
+      status: "Active",
+      image: "https://i.pravatar.cc/40?img=9",
+    },
+    {
+      id: 6,
+      name: "Sneha Reddy",
+      phone: "+91 98765 43215",
+      plan: "Monthly",
+      joinDate: "2025-10-15",
+      expiryDate: "2025-11-15",
+      status: "Expired",
+      image: "https://i.pravatar.cc/40?img=10",
+    },
   ]);
 
   // ─── State ──────────────────────────────────────────────────
@@ -46,8 +91,7 @@ const Members = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
 
-  // ✅ 10 members per page
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   // ─── Filters ────────────────────────────────────────────────
   const filteredMembers = members.filter((member) => {
@@ -185,10 +229,9 @@ const Members = () => {
 
       {/* ─── Members Table (Desktop) ────────────────────────── */}
       <div className="hidden md:block bg-white dark:bg-darkTheme-card rounded-2xl shadow-sm border border-gray-100 dark:border-darkTheme-border overflow-hidden">
-        {/* ✅ Table container with fixed height + scroll */}
-        <div className="overflow-y-auto max-h-[480px]">
+        <div className="overflow-x-auto">
           <table className="w-full text-sm">
-            <thead className="sticky top-0 bg-gray-50 dark:bg-darkTheme-border/30 z-10">
+            <thead className="bg-gray-50 dark:bg-darkTheme-border/30">
               <tr className="text-left text-gray-500 dark:text-darkTheme-muted">
                 <th className="py-3 px-4 font-semibold">Member</th>
                 <th className="py-3 px-4 font-semibold">Phone</th>
@@ -271,8 +314,7 @@ const Members = () => {
             </tbody>
           </table>
         </div>
-
-        {/* ─── Pagination ────────────────────────────────────── */}
+        {/* Pagination */}
         {filteredMembers.length > 0 && (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-4 py-3 border-t border-gray-100 dark:border-darkTheme-border">
             <span className="text-sm text-gray-500 dark:text-darkTheme-muted">
