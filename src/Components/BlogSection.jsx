@@ -94,7 +94,7 @@ const BlogSection = () => {
 
       <div className="relative max-w-[90rem] mx-auto">
         {/* Header */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-3 md:mb-6">
           <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-2 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
@@ -105,7 +105,7 @@ const BlogSection = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-2 md:mb-4">
             Fitness{" "}
             <span className="bg-gradient-to-r from-lime-300 to-emerald-400 bg-clip-text text-transparent">
               Insights
@@ -118,7 +118,7 @@ const BlogSection = () => {
 
         {/* Featured Blog - Small Banner with More Content */}
         {featuredBlog && (
-          <div className="mb-8 group">
+          <div className="mb-4 md:mb-8 group">
             <div className="relative bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl overflow-hidden border border-white/5 hover:border-lime-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-lime-500/10">
               <div className="grid grid-cols-1 md:grid-cols-3">
                 {/* Image */}
@@ -136,7 +136,7 @@ const BlogSection = () => {
                 </div>
 
                 {/* Content - More content added */}
-                <div className="md:col-span-2 p-5 md:p-6 flex flex-col justify-center">
+                <div className="md:col-span-2 p-4 md:p-6 flex flex-col justify-center">
                   {/* Metadata with more details */}
                   <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400 mb-2">
                     <span className="flex items-center gap-1">

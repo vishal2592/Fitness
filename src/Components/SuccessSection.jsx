@@ -54,7 +54,7 @@ const successData = [
 
 const SuccessSection = () => {
   return (
-    <section className="bg-[#141414] py-6">
+    <section className="bg-[#141414] py-3 md:py-6">
       <div className="max-w-[90rem] mx-auto px-4">
         {/* Heading - Centered */}
         <div className="mb-6 lg:mb-12 text-center">
@@ -88,21 +88,21 @@ const SuccessSection = () => {
               </div>
 
               {/* Content */}
-              <div className="relative flex-1 p-5">
+              <div className="relative flex-1 p-4 md:p-5">
                 <FaQuoteLeft className="text-lime-400 text-lg mb-3" />
 
                 <p className="text-white text-lg leading-7">
                   "{item.quote}"
                 </p>
 
-                <div className="mt-7">
+                <div className="mt-2">
                   <h3 className="text-lime-400 uppercase font-bold text-lg">
                     {item.name}
                   </h3>
-
+{/* 
                   <p className="text-gray-400 text-sm mt-1">
                     {item.result}
-                  </p>
+                  </p> */}
                 </div>
 
                 <FaQuoteRight className="absolute bottom-5 right-5 text-3xl text-lime-400 opacity-90" />

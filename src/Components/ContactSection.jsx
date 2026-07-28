@@ -89,7 +89,7 @@ const ContactSection = () => {
       <div className="relative max-w-[90rem] mx-auto">
         {/* Header */}
         <div className="text-center mb-2 md:mb-4">
-          <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
+          <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-2 md:mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400" />
@@ -141,7 +141,7 @@ const ContactSection = () => {
         {/* Contact Form & Map Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-4 md:p-8 border border-white/5 hover:border-lime-400/30 transition-all duration-300">
+          <div className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-3.5 md:p-8 border border-white/5 hover:border-lime-400/30 transition-all duration-300">
             <h3 className="text-2xl font-bold text-white mb-2">Send Us a Message</h3>
             <p className="text-gray-400 text-sm mb-6">
               Fill in the form below and we'll get back to you within 24 hours.

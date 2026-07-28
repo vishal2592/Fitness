@@ -64,8 +64,8 @@ const TrainerSection = () => {
 
       <div className="relative max-w-[90rem] mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
+        <div className="text-center mb-4 md:mb-8">
+          <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-2 md:mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400" />
@@ -75,19 +75,19 @@ const TrainerSection = () => {
             </span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-2 md:mb-4">
             Meet Your{" "}
             <span className="bg-gradient-to-r from-lime-300 to-emerald-400 bg-clip-text text-transparent">
               Trainers
             </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light">
+          <p className="text-gray-400 max-w-2xl mx-auto text-base md:text-xl font-light">
             World-class coaches dedicated to your success. Each expert brings unique skills to transform your fitness journey.
           </p>
         </div>
 
         {/* Trainers Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {trainers.map((trainer) => (
             <div
               key={trainer.id}
@@ -148,7 +148,7 @@ const TrainerSection = () => {
                 <p className="text-lime-400 text-sm font-semibold mb-2">
                   {trainer.role}
                 </p>
-                <p className="text-gray-400 text-xs uppercase tracking-wider mb-4">
+                <p className="text-gray-400 text-xs uppercase tracking-wider mb-2 md:mb-4">
                   {trainer.specialty}
                 </p>
 
@@ -181,11 +181,11 @@ const TrainerSection = () => {
         </div>
 
         {/* Testimonial/Quote Section */}
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-3 md:mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {trainers.slice(0, 2).map((trainer) => (
             <div
               key={`quote-${trainer.id}`}
-              className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-8 border border-white/5 hover:border-lime-400/30 transition-all duration-300 group"
+              className="bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-5 md:p-8 border border-white/5 hover:border-lime-400/30 transition-all duration-300 group"
             >
               <div className="flex items-start gap-4">
                 <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-lime-400/30 flex-shrink-0">
@@ -215,14 +215,14 @@ const TrainerSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-6 text-center">
-          <div className="relative bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-8 md:p-12 border border-lime-500/20 overflow-hidden">
+        <div className="mt-4 md:mt-6 text-center">
+          <div className="relative bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-6 md:p-12 border border-lime-500/20 overflow-hidden">
             <div className="absolute inset-0 bg-lime-500/5 blur-3xl" />
             <div className="relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                 Ready to Transform with Our Experts?
               </h3>
-              <p className="text-gray-400 max-w-xl mx-auto mb-6">
+              <p className="text-gray-400 max-w-xl mx-auto mb-3 md:mb-6">
                 Book a free consultation with your preferred trainer and start your journey today.
               </p>
               <button className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-lime-400 to-emerald-400 text-black font-bold py-3 px-8 rounded-full text-base hover:scale-105 transition-all duration-300 shadow-2xl shadow-lime-500/25 hover:shadow-lime-500/40">

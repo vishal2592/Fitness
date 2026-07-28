@@ -82,7 +82,7 @@ const CategorySection = () => {
         {/* Header - Centered with Lines on Both Sides */}
         <div className="mb-4">
           {/* Top Row: Line - Our Categories - Line */}
-          <div className="flex items-center gap-4 mb-2">
+          <div className="flex items-center gap-4 mb-1 md:mb-2">
             {/* Left Line - Light to Clear with Glow */}
             <div className="flex-1 h-0.5 bg-gradient-to-r from-lime-500/10 via-lime-500/50 to-lime-500 shadow-[0_0_10px_rgba(34,197,94,0.2)]"></div>
 
@@ -93,10 +93,10 @@ const CategorySection = () => {
           </div>
 
           {/* Second Row: CHOOSE YOUR WORKOUT */}
-          <h2 className="text-2xl md:text-3xl font-bold text-white text-center">
+          <h2 className="text-xl md:text-3xl font-bold text-white text-center">
             CHOOSE YOUR <span className="text-lime-400">WORKOUT</span>
           </h2>
-          <div className="w-20 h-1 bg-lime-400 mt-3 rounded-full mx-auto shadow-[0_0_15px_rgba(34,197,94,0.4)]"></div>
+          <div className="w-20 h-1 bg-lime-400 mt-2 rounded-full mx-auto shadow-[0_0_15px_rgba(34,197,94,0.4)]"></div>
         </div>
 
         {/* Swiper Carousel */}
@@ -211,7 +211,7 @@ const CategorySection = () => {
       {/* Custom Swiper Styles */}
       <style>{`
         .category-swiper {
-          padding: 10px 0 50px 0;
+          padding: 4px 0 28px 0;
         }
         
         .category-swiper .swiper-pagination-bullet {

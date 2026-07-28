@@ -81,8 +81,8 @@ const WhyChooseUs = () => {
 
       <div className="relative max-w-[90rem] mx-auto">
         {/* Header with animated badge */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
+        <div className="text-center mb-5 md:mb-8">
+          <div className="inline-flex items-center gap-3 bg-lime-500/10 text-lime-400 font-semibold text-xs md:text-sm tracking-[0.2em] px-5 py-2.5 rounded-full border border-lime-500/30 uppercase mb-2 md:mb-4 backdrop-blur-sm hover:bg-lime-500/20 transition-all duration-300 group">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-lime-400" />
@@ -92,7 +92,7 @@ const WhyChooseUs = () => {
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-black text-white tracking-tight mb-4">
+          <h2 className="text-2xl md:text-4xl lg:text-6xl font-black text-white tracking-tight mb-1 md:mb-4">
             Built for{" "}
             <span className="bg-gradient-to-r from-lime-300 to-emerald-400 bg-clip-text text-transparent">
               Champions
@@ -104,13 +104,13 @@ const WhyChooseUs = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
                 key={index}
-                className="group relative bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-8 border border-white/5 hover:border-lime-400/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-lime-500/10 overflow-hidden"
+                className="group relative bg-gradient-to-br from-[#1a1f26] to-[#13181e] rounded-3xl p-4 md:p-8 border border-white/5 hover:border-lime-400/50 transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl hover:shadow-lime-500/10 overflow-hidden"
               >
                 {/* Animated gradient overlay */}
                 <div
