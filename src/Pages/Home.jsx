@@ -6,6 +6,8 @@ import WhyChooseUs from '../Components/WhyChooseUs'
 import TrainerSection from '../Components/TrainerSection'
 import BlogSection from '../Components/BlogSection'
 import ContactSection from '../Components/ContactSection'
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
 
 
 
@@ -14,6 +16,7 @@ import ContactSection from '../Components/ContactSection'
 const Home = () => {
   return (
     <>
+    <Navbar/>
     <Hero/>
     <CategorySection />
     <SuccessSection />
@@ -21,6 +24,7 @@ const Home = () => {
     <TrainerSection />
     <BlogSection />
     <ContactSection />
+    <Footer/>
     
     </>
   )

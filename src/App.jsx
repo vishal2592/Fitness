@@ -12,13 +12,18 @@ import About from "./Pages/About";
 import AdminLayout from "./Admin/adlayouts/AdminLayout";
 import Dashboard from "./Admin/adpages/Dashboard";
 import Members from "./Admin/adpages/Members";
+import Category from "./Admin/adpages/Category";
+import CreateCategory from "./Admin/adpages/CreateCategory";
+import Subscription from "./Admin/adpages/Subscription";
+import Payment from "./Admin/adpages/Payment";
+import Program from "./Admin/adpages/Program";
+import Classes from "./Admin/adpages/Classes";
+import Trainers from "./Admin/adpages/Trainers";
+import Testingmonial from "./Admin/adpages/Testingmonial";
 
 function App() {
   return (
     <>
-      {/* Public Navbar */}
-      <Navbar />
-
       <Routes>
         {/* Public Routes (same as before) */}
         <Route path="/" element={<Home />} />
@@ -30,11 +35,17 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="members" element={<Members />} />
+          <Route path="category" element={<Category />} />
+          <Route path="create-category" element={<CreateCategory />} />
+          <Route path="subscriptions" element={<Subscription />} />
+          <Route path="payments" element={<Payment />} />
+          <Route path="programs" element={<Program />} />
+          <Route path="classes" element={<Classes />} />
+          <Route path="trainers" element={<Trainers />} />
+          <Route path="Testimonials" element={<Testingmonial />} />
+
         </Route>
       </Routes>
-
-      {/* Public Footer */}
-      <Footer />
     </>
   );
 }

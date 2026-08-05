@@ -277,11 +277,10 @@ const Members = () => {
                     </td>
                     <td className="py-3 px-4">
                       <span
-                        className={`px-2.5 py-1 rounded-full text-xs font-medium ${
-                          member.status === "Active"
+                        className={`px-2.5 py-1 rounded-full text-xs font-medium ${member.status === "Active"
                             ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
                             : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
-                        }`}
+                          }`}
                       >
                         {member.status}
                       </span>
@@ -332,11 +331,10 @@ const Members = () => {
                 <button
                   key={i}
                   onClick={() => setCurrentPage(i + 1)}
-                  className={`w-9 h-9 rounded-lg text-sm font-medium transition ${
-                    currentPage === i + 1
+                  className={`w-9 h-9 rounded-lg text-sm font-medium transition ${currentPage === i + 1
                       ? "bg-blue-500 text-white shadow-md"
                       : "hover:bg-gray-100 dark:hover:bg-darkTheme-border text-gray-600 dark:text-darkTheme-muted"
-                  }`}
+                    }`}
                 >
                   {i + 1}
                 </button>
@@ -375,11 +373,10 @@ const Members = () => {
                   </div>
                 </div>
                 <span
-                  className={`px-2.5 py-1 rounded-full text-xs font-medium ${
-                    member.status === "Active"
+                  className={`px-2.5 py-1 rounded-full text-xs font-medium ${member.status === "Active"
                       ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
                       : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
-                  }`}
+                    }`}
                 >
                   {member.status}
                 </span>

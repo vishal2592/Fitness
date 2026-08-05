@@ -68,7 +68,7 @@ const Dashboard = () => {
 
   return (
     // ✅ Added dark:bg-darkTheme-bg for dark mode background on the whole Dashboard
-    <div className="space-y-8 dark:bg-darkTheme-bg dark:text-darkTheme-text p-2 md:p-6 rounded-2xl">
+    <div className="space-y-4 md:space-y-8 dark:bg-darkTheme-bg dark:text-darkTheme-text p-2 md:p-6 rounded-2xl">
       {/* Welcome Section */}
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-darkTheme-text">
@@ -152,13 +152,12 @@ const Dashboard = () => {
                 </div>
                 <div className="w-full h-2.5 bg-gray-200 dark:bg-darkTheme-border rounded-full overflow-hidden">
                   <div
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      item.percentage >= 80
-                        ? "bg-green-500"
-                        : item.percentage >= 60
+                    className={`h-full rounded-full transition-all duration-500 ${item.percentage >= 80
+                      ? "bg-green-500"
+                      : item.percentage >= 60
                         ? "bg-yellow-500"
                         : "bg-red-500"
-                    }`}
+                      }`}
                     style={{ width: `${item.percentage}%` }}
                   />
                 </div>
@@ -218,15 +217,14 @@ const Dashboard = () => {
                 className="flex items-start gap-3 border-b dark:border-darkTheme-border pb-3 last:border-none"
               >
                 <div
-                  className={`w-2.5 h-2.5 mt-2 rounded-full ${
-                    act.type === "checkin"
-                      ? "bg-green-500"
-                      : act.type === "signup"
+                  className={`w-2.5 h-2.5 mt-2 rounded-full ${act.type === "checkin"
+                    ? "bg-green-500"
+                    : act.type === "signup"
                       ? "bg-blue-500"
                       : act.type === "payment"
-                      ? "bg-purple-500"
-                      : "bg-yellow-500"
-                  }`}
+                        ? "bg-purple-500"
+                        : "bg-yellow-500"
+                    }`}
                 />
                 <div className="flex-1">
                   <p className="text-sm text-gray-700 dark:text-darkTheme-text">
@@ -246,26 +244,30 @@ const Dashboard = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white dark:bg-darkTheme-card rounded-2xl shadow-sm p-5 md:p-6 border border-gray-100 dark:border-darkTheme-border">
+      <div className="bg-white dark:bg-darkTheme-card rounded-2xl shadow-sm p-4 md:p-6 border border-gray-100 dark:border-darkTheme-border">
         <h2 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-darkTheme-text mb-4">
           Quick Actions
         </h2>
-        <div className="flex flex-wrap gap-4">
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-blue-500/20">
+
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <button className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-blue-500/20">
             <PlusCircle size={18} />
-            Add Member
+            <span className="text-sm md:text-base">Add Member</span>
           </button>
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-green-500/20">
+
+          <button className="flex items-center justify-center gap-2 px-4 py-3 bg-green-500 hover:bg-green-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-green-500/20">
             <Calendar size={18} />
-            Schedule Class
+            <span className="text-sm md:text-base">Schedule Class</span>
           </button>
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-purple-500 hover:bg-purple-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-purple-500/20">
+
+          <button className="flex items-center justify-center gap-2 px-4 py-3 bg-purple-500 hover:bg-purple-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-purple-500/20">
             <Eye size={18} />
-            View Reports
+            <span className="text-sm md:text-base">View Reports</span>
           </button>
-          <button className="flex items-center gap-2 px-5 py-2.5 bg-orange-500 hover:bg-orange-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-orange-500/20">
+
+          <button className="flex items-center justify-center gap-2 px-4 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-xl transition-all duration-200 shadow-md shadow-orange-500/20">
             <TrendingUp size={18} />
-            Track Progress
+            <span className="text-sm md:text-base">Track Progress</span>
           </button>
         </div>
       </div>
