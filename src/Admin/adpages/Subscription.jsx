@@ -16,106 +16,21 @@ import {
     IndianRupee,
     ShieldCheck,
 } from "lucide-react";
+import { useSelector } from "react-redux";
+
+
+import yogaSubscriptionData from "../Data/Yoga/subscriptionData";
+import gymSubscriptionData from "../Data/Gym/subscriptionData";
 
 const Subscription = () => {
-    const [subscriptions, setSubscriptions] = useState([
-        {
-            id: 1,
-            member: "Rahul Kumar",
-            email: "rahul@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            startDate: "01 Aug 2026",
-            expiryDate: "31 Aug 2026",
-            paymentMethod: "UPI",
-            paymentId: "PAY_10021",
-            status: "Active",
-        },
-        {
-            id: 2,
-            member: "Amit Sharma",
-            email: "amit@gmail.com",
-            plan: "Yearly",
-            amount: 1999,
-            startDate: "15 Jul 2026",
-            expiryDate: "15 Jul 2027",
-            paymentMethod: "Card",
-            paymentId: "PAY_10022",
-            status: "Active",
-        },
-        {
-            id: 3,
-            member: "Priya Singh",
-            email: "priya@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            startDate: "05 Jun 2026",
-            expiryDate: "05 Jul 2026",
-            paymentMethod: "UPI",
-            paymentId: "PAY_10023",
-            status: "Expired",
-        },
-        {
-            id: 4,
-            member: "Neha Verma",
-            email: "neha@gmail.com",
-            plan: "Quarterly",
-            amount: 699,
-            startDate: "20 Jul 2026",
-            expiryDate: "20 Oct 2026",
-            paymentMethod: "Card",
-            paymentId: "PAY_10024",
-            status: "Active",
-        },
-        {
-            id: 5,
-            member: "Vikas Yadav",
-            email: "vikas@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            startDate: "28 Jul 2026",
-            expiryDate: "28 Aug 2026",
-            paymentMethod: "UPI",
-            paymentId: "PAY_10025",
-            status: "Active",
-        },
-        {
-            id: 6,
-            member: "Anjali Gupta",
-            email: "anjali@gmail.com",
-            plan: "Yearly",
-            amount: 1999,
-            startDate: "10 Jan 2026",
-            expiryDate: "10 Jan 2027",
-            paymentMethod: "Net Banking",
-            paymentId: "PAY_10026",
-            status: "Active",
-        },
-        {
-            id: 7,
-            member: "Rohit Singh",
-            email: "rohit@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            startDate: "01 May 2026",
-            expiryDate: "31 May 2026",
-            paymentMethod: "UPI",
-            paymentId: "PAY_10027",
-            status: "Expired",
-        },
-        {
-            id: 8,
-            member: "Pooja Sharma",
-            email: "pooja@gmail.com",
-            plan: "Quarterly",
-            amount: 699,
-            startDate: "12 Jul 2026",
-            expiryDate: "12 Oct 2026",
-            paymentMethod: "Card",
-            paymentId: "PAY_10028",
-            status: "Active",
-        },
-    ]);
+    const currentMode = useSelector(
+        (state) => state.mode.currentMode
+    );
+
+    const subscriptions =
+        currentMode === "gym"
+            ? gymSubscriptionData
+            : yogaSubscriptionData;
 
     const [searchTerm, setSearchTerm] = useState("");
     const [statusFilter, setStatusFilter] = useState("All");
@@ -253,11 +168,15 @@ const Subscription = () => {
 
             <div>
                 <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text md:text-3xl">
-                    Subscriptions
+                    {currentMode === "gym"
+                        ? "Gym Subscriptions"
+                        : "Yoga Subscriptions"}
                 </h1>
 
                 <p className="mt-1 text-sm text-gray-500 dark:text-darkTheme-muted">
-                    Manage member subscriptions and premium video access
+                    {currentMode === "gym"
+                        ? "Manage all gym member subscriptions."
+                        : "Manage all yoga member subscriptions."}
                 </p>
             </div>
 

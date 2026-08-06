@@ -1,5 +1,5 @@
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
     Plus,
     Search,
@@ -20,98 +20,31 @@ import {
     Video,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+
+import gymCategoryData from "../Data/gym/categoryData";
+import yogaCategoryData from "../Data/yoga/categoryData";
 
 const Category = () => {
-    const [categories, setCategories] = useState([
-        {
-            id: 1,
-            name: "Strength Training",
-            shortDescription: "Build strength, power and muscle",
-            fullDescription:
-                "Structured strength workouts focused on building muscle, improving power and increasing overall body strength.",
-            demoVideos: 1,
-            premiumVideos: 23,
-            status: "Active",
-            icon: "dumbbell",
-        },
-        {
-            id: 2,
-            name: "Weight Loss",
-            shortDescription: "Burn calories and lose body fat",
-            fullDescription:
-                "Fat-burning workouts designed to improve metabolism and support healthy weight loss.",
-            demoVideos: 1,
-            premiumVideos: 17,
-            status: "Active",
-            icon: "flame",
-        },
-        {
-            id: 3,
-            name: "HIIT & Cardio",
-            shortDescription: "High intensity cardio workouts",
-            fullDescription:
-                "High-intensity interval training and cardio sessions designed to improve stamina and cardiovascular fitness.",
-            demoVideos: 1,
-            premiumVideos: 20,
-            status: "Active",
-            icon: "heart",
-        },
-        {
-            id: 4,
-            name: "Yoga & Flexibility",
-            shortDescription: "Improve flexibility and mobility",
-            fullDescription:
-                "Yoga, stretching and mobility sessions designed to improve flexibility, balance and body movement.",
-            demoVideos: 1,
-            premiumVideos: 14,
-            status: "Active",
-            icon: "person",
-        },
-        {
-            id: 5,
-            name: "Muscle Building",
-            shortDescription: "Focused muscle growth programs",
-            fullDescription:
-                "Workout programs focused on progressive training and muscle development.",
-            demoVideos: 1,
-            premiumVideos: 27,
-            status: "Active",
-            icon: "activity",
-        },
-        {
-            id: 6,
-            name: "CrossFit",
-            shortDescription: "Functional and intense workouts",
-            fullDescription:
-                "Functional fitness workouts combining strength, endurance, speed and conditioning.",
-            demoVideos: 1,
-            premiumVideos: 11,
-            status: "Active",
-            icon: "bike",
-        },
-        {
-            id: 7,
-            name: "Zumba",
-            shortDescription: "Fun dance-based fitness",
-            fullDescription:
-                "Energetic dance fitness workouts designed to improve cardio fitness while having fun.",
-            demoVideos: 1,
-            premiumVideos: 9,
-            status: "Active",
-            icon: "flame",
-        },
-        {
-            id: 8,
-            name: "Home Workout",
-            shortDescription: "Workout without gym equipment",
-            fullDescription:
-                "Easy-to-follow home workouts requiring little or no equipment.",
-            demoVideos: 1,
-            premiumVideos: 15,
-            status: "Active",
-            icon: "dumbbell",
-        },
-    ]);
+
+    const currentMode = useSelector(
+        (state) => state.mode.currentMode
+    );
+
+    const [categories, setCategories] = useState(
+        currentMode === "gym"
+            ? gymCategoryData
+            : yogaCategoryData
+    );
+
+    useEffect(() => {
+        setCategories(
+            currentMode === "gym"
+                ? gymCategoryData
+                : yogaCategoryData
+        );
+    }, [currentMode]);
 
     const [searchTerm, setSearchTerm] = useState("");
     const [statusFilter, setStatusFilter] = useState("All");
@@ -284,12 +217,14 @@ const Category = () => {
             <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
 
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text md:text-3xl">
-                        Fitness Categories
+                    <h1 className="text-2xl font-bold text-white">
+                        {currentMode === "gym"
+                            ? "Gym Categories"
+                            : "Yoga Categories"}
                     </h1>
 
-                    <p className="mt-1 text-sm text-gray-500 dark:text-darkTheme-muted">
-                        Manage fitness categories and their workout videos
+                    <p className="text-sm text-gray-500">
+                        Manage {currentMode} categories and their videos.
                     </p>
                 </div>
 
@@ -578,11 +513,10 @@ const Category = () => {
                                         <td className="px-4 py-4">
 
                                             <span
-                                                className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${
-                                                    category.status === "Active"
-                                                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
-                                                        : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
-                                                }`}
+                                                className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${category.status === "Active"
+                                                    ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                                                    : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
+                                                    }`}
                                             >
                                                 {category.status}
                                             </span>
@@ -691,11 +625,10 @@ const Category = () => {
                                         onClick={() =>
                                             setCurrentPage(page)
                                         }
-                                        className={`h-9 w-9 rounded-lg text-sm font-medium transition ${
-                                            currentPage === page
-                                                ? "bg-blue-500 text-white shadow-md"
-                                                : "text-gray-600 hover:bg-gray-100 dark:text-darkTheme-muted dark:hover:bg-darkTheme-border"
-                                        }`}
+                                        className={`h-9 w-9 rounded-lg text-sm font-medium transition ${currentPage === page
+                                            ? "bg-blue-500 text-white shadow-md"
+                                            : "text-gray-600 hover:bg-gray-100 dark:text-darkTheme-muted dark:hover:bg-darkTheme-border"
+                                            }`}
                                     >
                                         {page}
                                     </button>
@@ -762,11 +695,10 @@ const Category = () => {
                                 </div>
 
                                 <span
-                                    className={`rounded-full px-2.5 py-1 text-xs font-medium ${
-                                        category.status === "Active"
-                                            ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
-                                            : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
-                                    }`}
+                                    className={`rounded-full px-2.5 py-1 text-xs font-medium ${category.status === "Active"
+                                        ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300"
+                                        : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300"
+                                        }`}
                                 >
                                     {category.status}
                                 </span>

@@ -9,7 +9,7 @@ import LoginPage from "./Pages/LoginPage";
 import Register from "./Pages/Register";
 import About from "./Pages/About";
 
-import AdminLayout from "./Admin/adlayouts/AdminLayout";
+import AdminLayout from "./Admin/adLayouts/AdminLayout";
 import Dashboard from "./Admin/adpages/Dashboard";
 import Members from "./Admin/adpages/Members";
 import Category from "./Admin/adpages/Category";

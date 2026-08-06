@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { FaBars, FaMoon, FaSun } from "react-icons/fa";
 import AdminSidebar from "../adcomponents/AdminSidebar";
+import ModuleSwitcher from "../adcomponents/ModuleSwitcher";
 
 const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -54,19 +55,28 @@ const AdminLayout = () => {
       <div className="flex-1 flex flex-col h-screen">
         {/* Navbar */}
         <header className="sticky top-0 z-30 h-16 flex items-center justify-between px-4 md:px-6 bg-white dark:bg-darkTheme-card border-b border-gray-200 dark:border-darkTheme-border shadow-sm">
+
+          {/* Left */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setSidebarOpen(true)}
               className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-darkTheme-border transition"
             >
-              <FaBars size={20} className="text-gray-700 dark:text-darkTheme-text" />
+              <FaBars
+                size={20}
+                className="text-gray-700 dark:text-darkTheme-text"
+              />
             </button>
+
             <h2 className="text-xl font-semibold text-gray-800 dark:text-darkTheme-text">
               Dashboard
             </h2>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Right */}
+          <div className="flex items-center gap-4">
+            <ModuleSwitcher />
+
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-darkTheme-border transition"
@@ -84,6 +94,7 @@ const AdminLayout = () => {
               className="w-9 h-9 rounded-full border border-gray-200 dark:border-darkTheme-border"
             />
           </div>
+
         </header>
 
         {/* Page Content */}

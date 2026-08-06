@@ -16,66 +16,22 @@ import {
     Layers,
     CheckCircle2,
 } from "lucide-react";
+import gymProgramData from "../Data/Gym/programData";
+import yogaProgramData from "../Data/Yoga/programData";
+import { useSelector } from "react-redux";
+
 
 const Program = () => {
-    // ==================================================
-    // DEMO DATA
-    // ==================================================
 
-    const [programs, setPrograms] = useState([
-        {
-            id: 1,
-            name: "30-Day Weight Loss",
-            category: "Weight Loss",
-            trainer: "Alex Johnson",
-            duration: 30,
-            level: "Beginner",
-            workouts: 24,
-            access: "Premium",
-            status: "Active",
-            description:
-                "A complete 30-day workout journey designed for beginners who want to improve fitness and support healthy weight loss.",
-        },
-        {
-            id: 2,
-            name: "21-Day Beginner Fitness",
-            category: "Strength Training",
-            trainer: "Mike Wilson",
-            duration: 21,
-            level: "Beginner",
-            workouts: 18,
-            access: "Free",
-            status: "Active",
-            description:
-                "Build your fitness foundation with simple full-body workouts and progressive training.",
-        },
-        {
-            id: 3,
-            name: "30-Day HIIT Challenge",
-            category: "HIIT & Cardio",
-            trainer: "Sarah Miller",
-            duration: 30,
-            level: "Intermediate",
-            workouts: 26,
-            access: "Premium",
-            status: "Active",
-            description:
-                "High-intensity workouts designed to improve endurance, stamina and overall conditioning.",
-        },
-        {
-            id: 4,
-            name: "14-Day Yoga Flexibility",
-            category: "Yoga & Flexibility",
-            trainer: "Emma Davis",
-            duration: 14,
-            level: "Beginner",
-            workouts: 12,
-            access: "Free",
-            status: "Draft",
-            description:
-                "A gentle yoga program focused on flexibility, mobility and relaxation.",
-        },
-    ]);
+
+    const currentMode = useSelector(
+        (state) => state.mode.currentMode
+    );
+
+    const programs =
+        currentMode === "gym"
+            ? gymProgramData
+            : yogaProgramData;
 
     const categories = [
         "Strength Training",
@@ -313,11 +269,15 @@ const Program = () => {
 
                 <div>
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text md:text-3xl">
-                        Programs
+                        {currentMode === "gym"
+                            ? "Gym Program"
+                            : "Yoga Program"}
                     </h1>
 
                     <p className="mt-1 text-sm text-gray-500 dark:text-darkTheme-muted">
-                        Create and manage structured workout programs
+                        {currentMode === "gym"
+                            ? "Manage all gym Program ."
+                            : "Manage all yoga Program ."}
                     </p>
                 </div>
 

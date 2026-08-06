@@ -15,106 +15,20 @@ import {
     Receipt,
     CalendarDays,
 } from "lucide-react";
+import { useSelector } from "react-redux";
+
+import gymPaymentData from "../Data/Gym/paymentData";
+import yogaPaymentData from "../Data/Yoga/paymentData";
 
 const Payment = () => {
-    const [payments] = useState([
-        {
-            id: 1,
-            member: "Rahul Kumar",
-            email: "rahul@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            paymentId: "PAY_10021",
-            transactionId: "TXN_874521",
-            method: "UPI",
-            date: "01 Aug 2026",
-            status: "Success",
-        },
-        {
-            id: 2,
-            member: "Amit Sharma",
-            email: "amit@gmail.com",
-            plan: "Yearly",
-            amount: 1999,
-            paymentId: "PAY_10022",
-            transactionId: "TXN_874522",
-            method: "Card",
-            date: "15 Jul 2026",
-            status: "Success",
-        },
-        {
-            id: 3,
-            member: "Priya Singh",
-            email: "priya@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            paymentId: "PAY_10023",
-            transactionId: "TXN_874523",
-            method: "UPI",
-            date: "05 Jul 2026",
-            status: "Failed",
-        },
-        {
-            id: 4,
-            member: "Neha Verma",
-            email: "neha@gmail.com",
-            plan: "Quarterly",
-            amount: 699,
-            paymentId: "PAY_10024",
-            transactionId: "TXN_874524",
-            method: "Card",
-            date: "20 Jul 2026",
-            status: "Success",
-        },
-        {
-            id: 5,
-            member: "Vikas Yadav",
-            email: "vikas@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            paymentId: "PAY_10025",
-            transactionId: "TXN_874525",
-            method: "UPI",
-            date: "28 Jul 2026",
-            status: "Pending",
-        },
-        {
-            id: 6,
-            member: "Anjali Gupta",
-            email: "anjali@gmail.com",
-            plan: "Yearly",
-            amount: 1999,
-            paymentId: "PAY_10026",
-            transactionId: "TXN_874526",
-            method: "Net Banking",
-            date: "10 Jul 2026",
-            status: "Success",
-        },
-        {
-            id: 7,
-            member: "Rohit Singh",
-            email: "rohit@gmail.com",
-            plan: "Monthly",
-            amount: 299,
-            paymentId: "PAY_10027",
-            transactionId: "TXN_874527",
-            method: "UPI",
-            date: "01 Jun 2026",
-            status: "Refunded",
-        },
-        {
-            id: 8,
-            member: "Pooja Sharma",
-            email: "pooja@gmail.com",
-            plan: "Quarterly",
-            amount: 699,
-            paymentId: "PAY_10028",
-            transactionId: "TXN_874528",
-            method: "Card",
-            date: "12 Jul 2026",
-            status: "Success",
-        },
-    ]);
+    const currentMode = useSelector(
+        (state) => state.mode.currentMode
+    );
+
+    const payments =
+        currentMode === "gym"
+            ? gymPaymentData
+            : yogaPaymentData;
 
     const [searchTerm, setSearchTerm] = useState("");
     const [statusFilter, setStatusFilter] = useState("All");
@@ -257,11 +171,15 @@ const Payment = () => {
 
             <div>
                 <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text md:text-3xl">
-                    Payments
+                    {currentMode === "gym"
+                        ? "Gym Payments"
+                        : "Yoga Payments"}
                 </h1>
 
                 <p className="mt-1 text-sm text-gray-500 dark:text-darkTheme-muted">
-                    Manage subscription payments and transaction history
+                    {currentMode === "gym"
+                        ? "Manage all gym payment transactions."
+                        : "Manage all yoga payment transactions."}
                 </p>
             </div>
 
@@ -655,11 +573,10 @@ const Payment = () => {
                                     onClick={() =>
                                         setCurrentPage(page)
                                     }
-                                    className={`h-9 w-9 rounded-lg text-sm font-medium ${
-                                        currentPage === page
+                                    className={`h-9 w-9 rounded-lg text-sm font-medium ${currentPage === page
                                             ? "bg-blue-500 text-white"
                                             : "text-gray-600 hover:bg-gray-100 dark:text-darkTheme-muted dark:hover:bg-darkTheme-border"
-                                    }`}
+                                        }`}
                                 >
                                     {page}
                                 </button>

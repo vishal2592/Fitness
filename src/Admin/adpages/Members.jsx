@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Users,
   UserCheck,
@@ -17,71 +16,27 @@ import {
   Award,
   Mail,
 } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
+import gymMembers from "../Data/Gym/memberData.js";
+import yogaMembers from "../Data/Gym/memberData.js";
+
 
 const Members = () => {
-  // ─── Sample Data ────────────────────────────────────────────
-  const [members, setMembers] = useState([
-    {
-      id: 1,
-      name: "Rahul Sharma",
-      phone: "+91 98765 43210",
-      plan: "Annual",
-      joinDate: "2025-01-15",
-      expiryDate: "2026-01-14",
-      status: "Active",
-      image: "https://i.pravatar.cc/40?img=5",
-    },
-    {
-      id: 2,
-      name: "Priya Singh",
-      phone: "+91 98765 43211",
-      plan: "Monthly",
-      joinDate: "2025-11-01",
-      expiryDate: "2025-12-01",
-      status: "Active",
-      image: "https://i.pravatar.cc/40?img=6",
-    },
-    {
-      id: 3,
-      name: "Aman Verma",
-      phone: "+91 98765 43212",
-      plan: "Quarterly",
-      joinDate: "2025-09-10",
-      expiryDate: "2025-12-10",
-      status: "Expired",
-      image: "https://i.pravatar.cc/40?img=7",
-    },
-    {
-      id: 4,
-      name: "Neha Gupta",
-      phone: "+91 98765 43213",
-      plan: "Annual",
-      joinDate: "2025-03-20",
-      expiryDate: "2026-03-19",
-      status: "Active",
-      image: "https://i.pravatar.cc/40?img=8",
-    },
-    {
-      id: 5,
-      name: "Vikram Patel",
-      phone: "+91 98765 43214",
-      plan: "Half-Yearly",
-      joinDate: "2025-08-05",
-      expiryDate: "2026-02-05",
-      status: "Active",
-      image: "https://i.pravatar.cc/40?img=9",
-    },
-    {
-      id: 6,
-      name: "Sneha Reddy",
-      phone: "+91 98765 43215",
-      plan: "Monthly",
-      joinDate: "2025-10-15",
-      expiryDate: "2025-11-15",
-      status: "Expired",
-      image: "https://i.pravatar.cc/40?img=10",
-    },
-  ]);
+
+  const currentMode = useSelector(
+    (state) => state.mode.currentMode
+  );
+  const [members, setMembers] = useState([]);
+
+  useEffect(() => {
+    setMembers(
+      currentMode === "gym"
+        ? gymMembers
+        : yogaMembers
+    );
+  }, [currentMode]);
 
   // ─── State ──────────────────────────────────────────────────
   const [searchTerm, setSearchTerm] = useState("");
@@ -149,15 +104,18 @@ const Members = () => {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-darkTheme-text">
-            Members
+            {currentMode === "gym" ? "Gym Members" : "Yoga Members"}
           </h1>
+
           <p className="text-gray-500 dark:text-darkTheme-muted mt-1">
-            Manage all gym members
+            Manage all {currentMode} members
           </p>
         </div>
         <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl shadow-md shadow-blue-500/20 transition hover:scale-105">
           <UserPlus size={20} />
-          <span className="font-medium">Add Member</span>
+          <span className="font-medium">
+            Add {currentMode === "gym" ? "Gym" : "Yoga"} Member
+          </span>
         </button>
       </div>
 
@@ -278,8 +236,8 @@ const Members = () => {
                     <td className="py-3 px-4">
                       <span
                         className={`px-2.5 py-1 rounded-full text-xs font-medium ${member.status === "Active"
-                            ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
-                            : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
+                          ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                          : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
                           }`}
                       >
                         {member.status}
@@ -332,8 +290,8 @@ const Members = () => {
                   key={i}
                   onClick={() => setCurrentPage(i + 1)}
                   className={`w-9 h-9 rounded-lg text-sm font-medium transition ${currentPage === i + 1
-                      ? "bg-blue-500 text-white shadow-md"
-                      : "hover:bg-gray-100 dark:hover:bg-darkTheme-border text-gray-600 dark:text-darkTheme-muted"
+                    ? "bg-blue-500 text-white shadow-md"
+                    : "hover:bg-gray-100 dark:hover:bg-darkTheme-border text-gray-600 dark:text-darkTheme-muted"
                     }`}
                 >
                   {i + 1}
@@ -374,8 +332,8 @@ const Members = () => {
                 </div>
                 <span
                   className={`px-2.5 py-1 rounded-full text-xs font-medium ${member.status === "Active"
-                      ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
-                      : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
+                    ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300"
+                    : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300"
                     }`}
                 >
                   {member.status}
