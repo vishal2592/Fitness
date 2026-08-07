@@ -163,7 +163,7 @@ const Payment = () => {
     };
 
     return (
-        <div className="min-h-screen space-y-6 p-4 md:p-6 dark:bg-darkTheme-bg">
+        <div className="min-h-screen w-full min-w-0 max-w-full space-y-6 p-3 sm:p-4 md:p-6 dark:bg-darkTheme-bg">
 
             {/* ==================================================
                 HEADER
@@ -369,11 +369,11 @@ const Payment = () => {
                 DESKTOP TABLE
             ================================================== */}
 
-            <div className="hidden overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm md:block dark:border-darkTheme-border dark:bg-darkTheme-card">
+            <div className="w-full max-w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-darkTheme-border dark:bg-darkTheme-card">
 
-                <div className="overflow-x-auto">
+                <div className="w-full max-w-full overflow-x-auto overscroll-x-contain [touch-action:pan-x]">
 
-                    <table className="w-full text-sm">
+                    <table className="min-w-[900px] w-full text-sm">
 
                         <thead className="bg-gray-50 dark:bg-darkTheme-border/30">
 
@@ -610,7 +610,7 @@ const Payment = () => {
                 MOBILE CARDS
             ================================================== */}
 
-            <div className="space-y-4 md:hidden">
+            <div className="hidden">
 
                 {paginatedPayments.length > 0 ? (
                     paginatedPayments.map((payment) => (

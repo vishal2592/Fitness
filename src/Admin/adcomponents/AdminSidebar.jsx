@@ -134,12 +134,12 @@ const AdminSidebar = ({
         },
         {
           name: "Blog",
-          path: "/admin/blog",
+          path: "/admin/blogs",
           icon: <FaBlog size={20} />,
         },
         {
           name: "Contact Queries",
-          path: "/admin/contact-queries",
+          path: "/admin/contact",
           icon: <FaEnvelope size={20} />,
         },
       ],

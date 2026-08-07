@@ -9,8 +9,16 @@ import {
     X,
     Upload,
 } from "lucide-react";
+import { useSelector } from "react-redux";
+import gymTrainers from "../Data/Gym/trainerData";
+import yogaTrainers from "../Data/Yoga/trainerData";
+import { useEffect } from "react";
+
 
 const Trainers = () => {
+    const currentMode = useSelector(
+        (state) => state.mode.currentMode
+    );
     const emptyForm = {
         name: "",
         profession: "",
@@ -22,46 +30,9 @@ const Trainers = () => {
         image: "",
         bio: "",
     };
-
-    const [trainers, setTrainers] = useState([
-        {
-            id: 1,
-            name: "Alex Johnson",
-            profession: "Strength Coach",
-            experience: "8 Years",
-            specialization: "Strength Training",
-            phone: "+91 98765 43210",
-            email: "alex@gym.com",
-            status: "Active",
-            image: "https://i.pravatar.cc/150?img=12",
-            bio: "Certified strength coach helping members build strength and improve performance.",
-        },
-        {
-            id: 2,
-            name: "Sarah Miller",
-            profession: "Fitness Trainer",
-            experience: "6 Years",
-            specialization: "HIIT & Cardio",
-            phone: "+91 98765 12345",
-            email: "sarah@gym.com",
-            status: "Active",
-            image: "https://i.pravatar.cc/150?img=47",
-            bio: "Fitness trainer specializing in high intensity workouts and endurance training.",
-        },
-        {
-            id: 3,
-            name: "Emma Davis",
-            profession: "Yoga Instructor",
-            experience: "5 Years",
-            specialization: "Yoga & Flexibility",
-            phone: "+91 91234 56789",
-            email: "emma@gym.com",
-            status: "Inactive",
-            image: "https://i.pravatar.cc/150?img=32",
-            bio: "Yoga instructor focused on flexibility, mobility and mindful movement.",
-        },
-    ]);
-
+    const [trainers, setTrainers] = useState(
+        currentMode === "gym" ? gymTrainers : yogaTrainers
+    );
     const [form, setForm] = useState(emptyForm);
     const [search, setSearch] = useState("");
     const [modal, setModal] = useState(null);
@@ -73,6 +44,10 @@ const Trainers = () => {
             .toLowerCase()
             .includes(search.toLowerCase())
     );
+
+    useEffect(() => {
+        setTrainers(currentMode === "gym" ? gymTrainers : yogaTrainers);
+    }, [currentMode]);
 
     const closeModal = () => {
         setModal(null);
@@ -144,12 +119,16 @@ const Trainers = () => {
             {/* Header */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text">
-                        Trainers
+                     <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text md:text-3xl">
+                        {currentMode === "gym"
+                            ? "Gym Trainers"
+                            : "Yoga Trainers"}
                     </h1>
 
-                    <p className="text-sm text-gray-500 dark:text-darkTheme-muted">
-                        Manage your gym trainers and their profiles
+                    <p className="mt-1 text-sm text-gray-500 dark:text-darkTheme-muted">
+                        {currentMode === "gym"
+                            ? "Manage all Trainers"
+                            : "Manage all Trainers"}
                     </p>
                 </div>
 
@@ -285,11 +264,10 @@ const Trainers = () => {
                                     {/* Status */}
                                     <td className="px-5 py-4">
                                         <span
-                                            className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${
-                                                trainer.status === "Active"
-                                                    ? "bg-green-100 text-green-700"
-                                                    : "bg-red-100 text-red-700"
-                                            }`}
+                                            className={`whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${trainer.status === "Active"
+                                                ? "bg-green-100 text-green-700"
+                                                : "bg-red-100 text-red-700"
+                                                }`}
                                         >
                                             {trainer.status}
                                         </span>
@@ -695,11 +673,10 @@ const Trainers = () => {
                                     </p>
 
                                     <span
-                                        className={`mt-1 inline-block rounded-full px-2.5 py-1 text-xs font-semibold ${
-                                            selected.status === "Active"
-                                                ? "bg-green-100 text-green-700"
-                                                : "bg-red-100 text-red-700"
-                                        }`}
+                                        className={`mt-1 inline-block rounded-full px-2.5 py-1 text-xs font-semibold ${selected.status === "Active"
+                                            ? "bg-green-100 text-green-700"
+                                            : "bg-red-100 text-red-700"
+                                            }`}
                                     >
                                         {selected.status}
                                     </span>

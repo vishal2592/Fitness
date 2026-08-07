@@ -10,6 +10,16 @@ import {
     Upload,
 } from "lucide-react";
 
+import { useSelector } from "react-redux";
+
+import gymTestimonials from "../Data/Gym/testimonialData";
+import yogaTestimonials from "../Data/Yoga/testimonialData";
+
+const testimonialData = {
+    gym: gymTestimonials,
+    yoga: yogaTestimonials,
+};
+
 const Testingmonial = () => {
     const emptyForm = {
         name: "",
@@ -20,48 +30,9 @@ const Testingmonial = () => {
         status: "Active",
     };
 
-    const [testimonials, setTestimonials] = useState([
-        {
-            id: 1,
-            name: "Jessica Brown",
-            profession: "Marketing Manager",
-            rating: 5,
-            message:
-                "The trainers are amazing and the classes have completely changed my fitness routine.",
-            image: "https://i.pravatar.cc/150?img=47",
-            status: "Active",
-        },
-        {
-            id: 2,
-            name: "Michael Smith",
-            profession: "Software Developer",
-            rating: 5,
-            message:
-                "Great environment, professional trainers and excellent workout programs.",
-            image: "https://i.pravatar.cc/150?img=12",
-            status: "Active",
-        },
-        {
-            id: 3,
-            name: "Sarah Wilson",
-            profession: "Designer",
-            rating: 4,
-            message:
-                "I have seen a huge improvement in my strength and overall fitness.",
-            image: "https://i.pravatar.cc/150?img=32",
-            status: "Inactive",
-        },
-        {
-            id: 4,
-            name: "David Miller",
-            profession: "Business Owner",
-            rating: 5,
-            message:
-                "Amazing trainers and a very friendly environment. Highly recommended.",
-            image: "https://i.pravatar.cc/150?img=11",
-            status: "Active",
-        },
-    ]);
+    const currentMode = useSelector((state) => state.mode.currentMode);
+
+    const [testimonials, setTestimonials] = useState([]);
 
     const [form, setForm] = useState(emptyForm);
     const [selected, setSelected] = useState(null);
@@ -85,9 +56,9 @@ const Testingmonial = () => {
         }));
     };
 
-    /* =========================
-       SUBMIT
-    ========================= */
+    useEffect(() => {
+        setTestimonials(currentMode === "gym" ? gymTestimonials : yogaTestimonials);
+    }, [currentMode]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -112,9 +83,9 @@ const Testingmonial = () => {
                 prev.map((item) =>
                     item.id === selected.id
                         ? {
-                              ...item,
-                              ...form,
-                          }
+                            ...item,
+                            ...form,
+                        }
                         : item
                 )
             );
@@ -219,12 +190,16 @@ const Testingmonial = () => {
             <div className="mb-5 flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
 
                 <div className="min-w-0">
-                    <h1 className="truncate text-xl font-bold text-gray-800 dark:text-darkTheme-text sm:text-2xl">
-                        Testimonials
+                    <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text md:text-3xl">
+                        {currentMode === "gym"
+                            ? "Gym Testimonials"
+                            : "Yoga Testimonials"}
                     </h1>
 
-                    <p className="mt-1 text-xs text-gray-500 dark:text-darkTheme-muted sm:text-sm">
-                        Manage client reviews and testimonials
+                    <p className="mt-1 text-sm text-gray-500 dark:text-darkTheme-muted">
+                        {currentMode === "gym"
+                            ? "Manage all Testimonials"
+                            : "Manage all Testimonials"}
                     </p>
                 </div>
 
@@ -369,11 +344,10 @@ const Testingmonial = () => {
 
                                         <td className="px-4 py-4 sm:px-5">
                                             <span
-                                                className={`inline-flex whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${
-                                                    item.status === "Active"
-                                                        ? "bg-green-100 text-green-700"
-                                                        : "bg-red-100 text-red-700"
-                                                }`}
+                                                className={`inline-flex whitespace-nowrap rounded-full px-3 py-1 text-xs font-semibold ${item.status === "Active"
+                                                    ? "bg-green-100 text-green-700"
+                                                    : "bg-red-100 text-red-700"
+                                                    }`}
                                             >
                                                 {item.status}
                                             </span>
@@ -841,11 +815,10 @@ const Testingmonial = () => {
                             <div className="mt-4">
 
                                 <span
-                                    className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-                                        selected.status === "Active"
-                                            ? "bg-green-100 text-green-700"
-                                            : "bg-red-100 text-red-700"
-                                    }`}
+                                    className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${selected.status === "Active"
+                                        ? "bg-green-100 text-green-700"
+                                        : "bg-red-100 text-red-700"
+                                        }`}
                                 >
                                     {selected.status}
                                 </span>

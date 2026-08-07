@@ -18,12 +18,15 @@ import {
 } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import gymMembers from "../Data/Gym/memberData.js";
-import yogaMembers from "../Data/Gym/memberData.js";
+import yogaMembers from "../Data/Yoga/memberData.js";
 
 
 const Members = () => {
+
+  const navigate = useNavigate();
 
   const currentMode = useSelector(
     (state) => state.mode.currentMode
@@ -99,7 +102,7 @@ const Members = () => {
 
   // ─── Render ──────────────────────────────────────────────────
   return (
-    <div className="space-y-6 p-4 md:p-6 dark:bg-darkTheme-bg min-h-screen">
+    <div className="min-h-screen w-full min-w-0 max-w-full space-y-6 p-3 sm:p-4 md:p-6 dark:bg-darkTheme-bg">
       {/* ─── Header ──────────────────────────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
@@ -111,7 +114,7 @@ const Members = () => {
             Manage all {currentMode} members
           </p>
         </div>
-        <button className="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl shadow-md shadow-blue-500/20 transition hover:scale-105">
+        <button onClick={() => navigate("/admin/members/add")} className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-2.5 text-white shadow-md shadow-blue-500/20 transition hover:bg-blue-600 sm:w-auto">
           <UserPlus size={20} />
           <span className="font-medium">
             Add {currentMode === "gym" ? "Gym" : "Yoga"} Member
@@ -186,9 +189,9 @@ const Members = () => {
       </div>
 
       {/* ─── Members Table (Desktop) ────────────────────────── */}
-      <div className="hidden md:block bg-white dark:bg-darkTheme-card rounded-2xl shadow-sm border border-gray-100 dark:border-darkTheme-border overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
+      <div className="w-full max-w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-darkTheme-border dark:bg-darkTheme-card">
+        <div className="w-full max-w-full overflow-x-auto overscroll-x-contain [touch-action:pan-x]">
+          <table className="min-w-[940px] w-full text-sm">
             <thead className="bg-gray-50 dark:bg-darkTheme-border/30">
               <tr className="text-left text-gray-500 dark:text-darkTheme-muted">
                 <th className="py-3 px-4 font-semibold">Member</th>
@@ -310,7 +313,7 @@ const Members = () => {
       </div>
 
       {/* ─── Members Cards (Mobile) ─────────────────────────── */}
-      <div className="md:hidden space-y-4">
+      <div className="hidden">
         {paginatedMembers.length > 0 ? (
           paginatedMembers.map((member) => (
             <div

@@ -530,7 +530,7 @@ const Category = () => {
                                             <div className="flex items-center justify-center gap-2">
 
                                                 <Link
-                                                    to={`/admin/videos?category=${category.id}`}
+                                                    to={`/admin/videos/${category.id}`}
                                                     className="flex items-center gap-1.5 rounded-lg bg-purple-500 px-3 py-2 text-xs font-medium text-white transition hover:bg-purple-600"
                                                 >
                                                     <Video size={14} />
@@ -752,7 +752,7 @@ const Category = () => {
                             <div className="mt-4 grid grid-cols-3 gap-2 border-t border-gray-100 pt-4 dark:border-darkTheme-border">
 
                                 <Link
-                                    to={`/admin/videos?category=${category.id}`}
+                                    to={`/admin/videos/${category.id}`}
                                     className="flex items-center justify-center gap-1.5 rounded-lg bg-purple-500 px-2 py-2.5 text-xs font-medium text-white transition hover:bg-purple-600"
                                 >
                                     <Video size={14} />

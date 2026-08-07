@@ -53,20 +53,20 @@ const Classes = () => {
     const remove = id => { if (window.confirm("Delete this class?")) setClassList(prev => prev.filter(c => c.id !== id)); setMenu(null); };
 
     const stats = [
-        ["Total Classes", classList.length, CalendarDays, "blue"],
-        ["Scheduled", classList.filter(c => c.status === "Scheduled").length, CalendarDays, "green"],
-        ["Live Classes", classList.filter(c => c.type === "Live").length, Video, "purple"],
-        ["Total Enrolled", classList.reduce((a, c) => a + c.enrolled, 0), Users, "orange"],
+        ["Total Classes", classList.length, CalendarDays, "bg-blue-500"],
+        ["Scheduled", classList.filter(c => c.status === "Scheduled").length, CalendarDays, "bg-green-500"],
+        ["Live Classes", classList.filter(c => c.type === "Live").length, Video, "bg-purple-500"],
+        ["Total Enrolled", classList.reduce((a, c) => a + c.enrolled, 0), Users, "bg-orange-500"],
     ];
 
     return (
-        <div className="min-h-screen space-y-5 p-4 md:p-6">
+        <div className="min-h-screen w-full min-w-0 max-w-full space-y-5 p-3 sm:p-4 md:p-6">
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                 <div>
                     <h1 className="text-2xl font-bold text-gray-800 dark:text-darkTheme-text">Classes</h1>
                     <p className="text-sm text-gray-500 dark:text-darkTheme-muted">Schedule and manage live fitness classes</p>
                 </div>
-                <button onClick={() => { setSelected(null); setForm(emptyForm); setModal("form"); }} className="flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-600">
+                <button onClick={() => { setSelected(null); setForm(emptyForm); setModal("form"); }} className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-600 sm:w-auto">
                     <Plus size={18} /> Create Class
                 </button>
             </div>
@@ -78,7 +78,7 @@ const Classes = () => {
                                 <p className="text-sm text-gray-500 dark:text-darkTheme-muted">{label}</p>
                                 <h3 className="mt-1 text-2xl font-bold text-gray-800 dark:text-darkTheme-text">{value}</h3>
                             </div>
-                            <div className={`flex h-10 w-10 items-center justify-center rounded-xl bg-${color}-500 text-white`}>
+                            <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-white ${color}`}>
                                 <Icon size={19} />
                             </div>
                         </div>
@@ -100,9 +100,9 @@ const Classes = () => {
                     <option>Full</option>
                 </select>
             </div>
-            <div className="hidden overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm md:block dark:border-darkTheme-border dark:bg-darkTheme-card">
-                <div className="overflow-x-auto">
-                    <table className="w-full text-sm">
+            <div className="w-full max-w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-darkTheme-border dark:bg-darkTheme-card">
+                <div className="w-full max-w-full overflow-x-auto overscroll-x-contain [touch-action:pan-x]">
+                    <table className="min-w-[1000px] w-full text-sm">
                         <thead className="bg-gray-50 dark:bg-darkTheme-border/30">
                             <tr className="text-left text-gray-700 dark:text-darkTheme-text">
                                 {["Class", "Trainer", "Date & Time", "Duration", "Members", "Type", "Status", "Action"].map(h => <th key={h} className="px-4 py-4 font-semibold">{h}</th>)}
@@ -115,19 +115,19 @@ const Classes = () => {
                                         <p className="font-semibold text-gray-800 dark:text-darkTheme-text">{c.name}</p>
                                         <p className="text-xs text-gray-500">{c.category}</p>
                                     </td>
-                                    <td className="px-4 py-4 text-white">{c.trainer}</td>
-                                    <td className="px-4 py-4 text-white">{c.date}<br /><span className="text-xs text-gray-500">{c.time}</span></td>
-                                    <td className="px-4 py-4 text-white">{c.duration} min</td>
-                                    <td className="px-4 py-4 text-white">{c.enrolled}/{c.capacity}</td>
-                                    <td className="px-4 py-4 text-white"><span className="rounded-full bg-blue-100 px-2.5 py-1 text-xs text-blue-700">{c.type}</span></td>
-                                    <td className="px-4 py-4 text-white"><span className="rounded-full bg-green-100 px-2.5 py-1 text-xs text-green-700">{c.status}</span></td>
+                                    <td className="px-4 py-4 text-gray-700 dark:text-darkTheme-text">{c.trainer}</td>
+                                    <td className="px-4 py-4 text-gray-700 dark:text-darkTheme-text">{c.date}<br /><span className="text-xs text-gray-500 dark:text-darkTheme-muted">{c.time}</span></td>
+                                    <td className="px-4 py-4 text-gray-700 dark:text-darkTheme-text">{c.duration} min</td>
+                                    <td className="px-4 py-4 text-gray-700 dark:text-darkTheme-text">{c.enrolled}/{c.capacity}</td>
+                                    <td className="px-4 py-4"><span className="rounded-full bg-blue-100 px-2.5 py-1 text-xs text-blue-700 dark:bg-blue-900/30 dark:text-blue-300">{c.type}</span></td>
+                                    <td className="px-4 py-4"><span className="rounded-full bg-green-100 px-2.5 py-1 text-xs text-green-700 dark:bg-green-900/30 dark:text-green-300">{c.status}</span></td>
                                     <td className="relative px-4 py-4 text-center">
-                                        <button onClick={() => setMenu(menu === c.id ? null : c.id)}><MoreVertical size={18} /></button>
+                                        <button onClick={() => setMenu(menu === c.id ? null : c.id)} className="rounded-lg p-2 text-gray-600 transition hover:bg-gray-100 dark:text-darkTheme-muted dark:hover:bg-darkTheme-border"><MoreVertical size={18} /></button>
                                         {menu === c.id && (
                                             <div className="absolute right-4 top-12 z-20 w-32 rounded-xl border bg-white p-1 shadow-xl dark:border-darkTheme-border dark:bg-darkTheme-card">
-                                                <button onClick={() => { setSelected(c); setModal("view"); setMenu(null); }} className="flex w-full gap-2 rounded-lg px-3 py-2 text-sm hover:bg-gray-100"><Eye size={15} /> View</button>
-                                                <button onClick={() => edit(c)} className="flex w-full gap-2 rounded-lg px-3 py-2 text-sm hover:bg-gray-100"><Pencil size={15} /> Edit</button>
-                                                <button onClick={() => remove(c.id)} className="flex w-full gap-2 rounded-lg px-3 py-2 text-sm text-red-500 hover:bg-red-50"><Trash2 size={15} /> Delete</button>
+                                                <button onClick={() => { setSelected(c); setModal("view"); setMenu(null); }} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-darkTheme-text dark:hover:bg-darkTheme-border"><Eye size={15} /> View</button>
+                                                <button onClick={() => edit(c)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-darkTheme-text dark:hover:bg-darkTheme-border"><Pencil size={15} /> Edit</button>
+                                                <button onClick={() => remove(c.id)} className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20"><Trash2 size={15} /> Delete</button>
                                             </div>
                                         )}
                                     </td>
@@ -137,7 +137,7 @@ const Classes = () => {
                     </table>
                 </div>
             </div>
-            <div className="space-y-3 md:hidden">
+            <div className="hidden">
                 {filtered.map(c => (
                     <div key={c.id} className="rounded-2xl border bg-white p-4 dark:border-darkTheme-border dark:bg-darkTheme-card">
                         <div className="flex justify-between">

@@ -12,6 +12,7 @@ import About from "./Pages/About";
 import AdminLayout from "./Admin/adLayouts/AdminLayout";
 import Dashboard from "./Admin/adpages/Dashboard";
 import Members from "./Admin/adpages/Members";
+import AddMember from "./Admin/adpages/AddMember";
 import Category from "./Admin/adpages/Category";
 import CreateCategory from "./Admin/adpages/CreateCategory";
 import Subscription from "./Admin/adpages/Subscription";
@@ -20,6 +21,10 @@ import Program from "./Admin/adpages/Program";
 import Classes from "./Admin/adpages/Classes";
 import Trainers from "./Admin/adpages/Trainers";
 import Testingmonial from "./Admin/adpages/Testingmonial";
+import Video from "./Admin/adpages/Video";
+import Gallery from "./Admin/adpages/Gallery";
+import Blog from "./Admin/adpages/Blog";
+import Contact from "./Admin/adpages/Contact";
 
 function App() {
   return (
@@ -35,7 +40,9 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
           <Route path="members" element={<Members />} />
+          <Route path="members/add" element={<AddMember />} />
           <Route path="category" element={<Category />} />
+          <Route path="videos/:categoryId" element={<Video />} />
           <Route path="create-category" element={<CreateCategory />} />
           <Route path="subscriptions" element={<Subscription />} />
           <Route path="payments" element={<Payment />} />
@@ -43,6 +50,9 @@ function App() {
           <Route path="classes" element={<Classes />} />
           <Route path="trainers" element={<Trainers />} />
           <Route path="Testimonials" element={<Testingmonial />} />
+          <Route path="gallery" element={<Gallery />} />
+          <Route path="blogs" element={<Blog />} />
+          <Route path="contact" element={<Contact />} />
 
         </Route>
       </Routes>

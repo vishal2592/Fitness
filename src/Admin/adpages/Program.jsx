@@ -1,9 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
     Plus,
     Search,
     Filter,
     ChevronDown,
+    ChevronLeft,
+    ChevronRight,
     MoreVertical,
     Pencil,
     Trash2,
@@ -28,10 +30,12 @@ const Program = () => {
         (state) => state.mode.currentMode
     );
 
-    const programs =
+    const sourcePrograms =
         currentMode === "gym"
             ? gymProgramData
             : yogaProgramData;
+
+    const [programs, setPrograms] = useState(sourcePrograms);
 
     const categories = [
         "Strength Training",
@@ -66,6 +70,13 @@ const Program = () => {
     const [editingProgram, setEditingProgram] = useState(null);
 
     const [openMenu, setOpenMenu] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 10;
+
+    useEffect(() => {
+        setPrograms(sourcePrograms);
+        setCurrentPage(1);
+    }, [currentMode]);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -110,6 +121,15 @@ const Program = () => {
         categoryFilter,
         statusFilter,
     ]);
+
+    const totalPages = Math.max(
+        1,
+        Math.ceil(filteredPrograms.length / itemsPerPage)
+    );
+    const paginatedPrograms = filteredPrograms.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
 
     // ==================================================
     // SUMMARY
@@ -259,7 +279,7 @@ const Program = () => {
     };
 
     return (
-        <div className="min-h-screen space-y-6 p-4 md:p-6">
+        <div className="min-h-screen w-full min-w-0 max-w-full space-y-6 p-3 sm:p-4 md:p-6">
 
             {/* ==================================================
                 HEADER
@@ -286,7 +306,7 @@ const Program = () => {
                         resetForm();
                         setShowCreateModal(true);
                     }}
-                    className="flex items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-600"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:bg-blue-600 sm:w-auto"
                 >
                     <Plus size={18} />
                     Create Program
@@ -440,9 +460,10 @@ const Program = () => {
                             type="text"
                             placeholder="Search programs..."
                             value={searchTerm}
-                            onChange={(e) =>
-                                setSearchTerm(e.target.value)
-                            }
+                            onChange={(e) => {
+                                setSearchTerm(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="w-full rounded-xl border border-gray-200 bg-gray-50 py-2.5 pl-10 pr-4 text-sm text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 dark:border-darkTheme-border dark:bg-darkTheme-border/30 dark:text-darkTheme-text"
                         />
 
@@ -454,9 +475,10 @@ const Program = () => {
 
                         <select
                             value={categoryFilter}
-                            onChange={(e) =>
-                                setCategoryFilter(e.target.value)
-                            }
+                            onChange={(e) => {
+                                setCategoryFilter(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 pr-9 text-sm text-gray-700 outline-none focus:border-blue-500 dark:border-darkTheme-border dark:bg-darkTheme-border/30 dark:text-darkTheme-text"
                         >
                             <option value="All">
@@ -486,9 +508,10 @@ const Program = () => {
 
                         <select
                             value={statusFilter}
-                            onChange={(e) =>
-                                setStatusFilter(e.target.value)
-                            }
+                            onChange={(e) => {
+                                setStatusFilter(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 pr-9 text-sm text-gray-700 outline-none focus:border-blue-500 dark:border-darkTheme-border dark:bg-darkTheme-border/30 dark:text-darkTheme-text"
                         >
                             <option value="All">
@@ -519,11 +542,11 @@ const Program = () => {
                 DESKTOP TABLE
             ================================================== */}
 
-            <div className="hidden overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm md:block dark:border-darkTheme-border dark:bg-darkTheme-card">
+            <div className="w-full max-w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm dark:border-darkTheme-border dark:bg-darkTheme-card">
 
-                <div className="overflow-x-auto">
+                <div className="w-full max-w-full overflow-x-auto overscroll-x-contain [touch-action:pan-x]">
 
-                    <table className="w-full text-sm">
+                    <table className="min-w-[1050px] w-full text-sm">
 
                         <thead className="bg-gray-50 dark:bg-darkTheme-border/30">
 
@@ -567,8 +590,8 @@ const Program = () => {
 
                         <tbody>
 
-                            {filteredPrograms.length > 0 ? (
-                                filteredPrograms.map((program) => (
+                            {paginatedPrograms.length > 0 ? (
+                                paginatedPrograms.map((program) => (
                                     <tr
                                         key={program.id}
                                         className="border-b border-gray-100 last:border-none hover:bg-gray-50 dark:border-darkTheme-border dark:hover:bg-darkTheme-border/20"
@@ -762,13 +785,35 @@ const Program = () => {
 
                 </div>
 
+                {filteredPrograms.length > 0 && (
+                    <div className="flex flex-col items-center justify-between gap-4 border-t border-gray-100 px-4 py-4 sm:flex-row dark:border-darkTheme-border">
+                        <span className="text-sm text-gray-500 dark:text-darkTheme-muted">
+                            Showing {(currentPage - 1) * itemsPerPage + 1} to {Math.min(currentPage * itemsPerPage, filteredPrograms.length)} of {filteredPrograms.length} programs
+                        </span>
+
+                        <div className="flex items-center gap-1">
+                            <button onClick={() => setCurrentPage((page) => Math.max(page - 1, 1))} disabled={currentPage === 1} className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40 dark:hover:bg-darkTheme-border">
+                                <ChevronLeft size={18} />
+                            </button>
+                            {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+                                <button key={page} onClick={() => setCurrentPage(page)} className={`h-9 w-9 rounded-lg text-sm font-medium ${currentPage === page ? "bg-blue-500 text-white" : "text-gray-600 hover:bg-gray-100 dark:text-darkTheme-muted dark:hover:bg-darkTheme-border"}`}>
+                                    {page}
+                                </button>
+                            ))}
+                            <button onClick={() => setCurrentPage((page) => Math.min(page + 1, totalPages))} disabled={currentPage === totalPages} className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40 dark:hover:bg-darkTheme-border">
+                                <ChevronRight size={18} />
+                            </button>
+                        </div>
+                    </div>
+                )}
+
             </div>
 
             {/* ==================================================
                 MOBILE CARDS
             ================================================== */}
 
-            <div className="space-y-4 md:hidden">
+            <div className="hidden">
 
                 {filteredPrograms.length > 0 ? (
                     filteredPrograms.map((program) => (

@@ -52,7 +52,7 @@ const AdminLayout = () => {
       )}
 
       {/* Main Layout */}
-      <div className="flex-1 flex flex-col h-screen">
+      <div className="flex min-w-0 flex-1 flex-col h-screen">
         {/* Navbar */}
         <header className="sticky top-0 z-30 h-16 flex items-center justify-between px-4 md:px-6 bg-white dark:bg-darkTheme-card border-b border-gray-200 dark:border-darkTheme-border shadow-sm">
 
@@ -98,7 +98,7 @@ const AdminLayout = () => {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-y-auto p-2 md:p-6 bg-gray-100 dark:bg-darkTheme-bg">
+        <main className="min-w-0 flex-1 overflow-x-hidden overflow-y-auto p-2 md:p-6 bg-gray-100 dark:bg-darkTheme-bg">
           <Outlet />
         </main>
       </div>
