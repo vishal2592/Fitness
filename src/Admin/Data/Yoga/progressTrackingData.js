@@ -1,0 +1,38 @@
+const yogaProgressTrackingData = [
+  {
+    id: 1,
+    memberId: "YOG001",
+    name: "Priya Sharma",
+    email: "priya@gmail.com",
+    flexibility: "Excellent",
+    balance: "Good",
+    mobility: "Very Good",
+    yogaSessions: 24,
+    attendance: 92,
+    meditation: 15,
+    breathingPractice: 10,
+    stressLevel: "Low",
+    progress: 22,
+    status: "Excellent",
+    lastUpdated: "10 Aug 2026",
+  },
+  {
+    id: 2,
+    memberId: "YOG002",
+    name: "Neha Verma",
+    email: "neha@gmail.com",
+    flexibility: "Good",
+    balance: "Very Good",
+    mobility: "Good",
+    yogaSessions: 20,
+    attendance: 88,
+    meditation: 10,
+    breathingPractice: 8,
+    stressLevel: "Medium",
+    progress: 16,
+    status: "Good",
+    lastUpdated: "09 Aug 2026",
+  },
+];
+
+export default yogaProgressTrackingData;

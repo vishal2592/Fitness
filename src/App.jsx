@@ -25,12 +25,19 @@ import Video from "./Admin/adpages/Video";
 import Gallery from "./Admin/adpages/Gallery";
 import Blog from "./Admin/adpages/Blog";
 import Contact from "./Admin/adpages/Contact";
+import Offer from "./Admin/adpages/Offers";
+import AddOffers from "./Admin/adpages/AddOffers";
+import Notification from "./Admin/adpages/Notification";
+import SendNotification from "./Admin/adpages/SendNotification";
+import Profile from "./Admin/adpages/Profile";
+import AdminUser from "./Admin/adpages/AdminUser";
+import Progress from "./Admin/adpages/Progress";
 
 function App() {
   return (
     <>
       <Routes>
-        {/* Public Routes (same as before) */}
+        {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Register />} />
@@ -39,21 +46,34 @@ function App() {
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Dashboard />} />
+
           <Route path="members" element={<Members />} />
           <Route path="members/add" element={<AddMember />} />
+
           <Route path="category" element={<Category />} />
           <Route path="videos/:categoryId" element={<Video />} />
           <Route path="create-category" element={<CreateCategory />} />
+
           <Route path="subscriptions" element={<Subscription />} />
           <Route path="payments" element={<Payment />} />
+
           <Route path="programs" element={<Program />} />
           <Route path="classes" element={<Classes />} />
           <Route path="trainers" element={<Trainers />} />
-          <Route path="Testimonials" element={<Testingmonial />} />
+
+          <Route path="testimonials" element={<Testingmonial />} />
+
           <Route path="gallery" element={<Gallery />} />
           <Route path="blogs" element={<Blog />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="profile" element={<Profile/>} />
+          <Route path="admin-user" element={<AdminUser/>} />
+          <Route path="progress" element={<Progress/>} />
 
+          <Route path="offers" element={<Offer />} />
+          <Route path="notification" element={<Notification />} />
+          <Route path="/admin/offers/add-offers" element={<AddOffers />} />
+          <Route path="/admin/notification/sendnotification" element={<SendNotification />} />
         </Route>
       </Routes>
     </>

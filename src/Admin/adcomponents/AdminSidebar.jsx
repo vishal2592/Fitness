@@ -105,13 +105,8 @@ const AdminSidebar = ({
       icon: <FaChartLine size={20} />,
       items: [
         {
-          name: "Transformations",
-          path: "/admin/transformations",
-          icon: <FaCamera size={20} />,
-        },
-        {
           name: "Progress Tracking",
-          path: "/admin/progress-tracking",
+          path: "/admin/progress",
           icon: <FaChartLine size={20} />,
         },
       ],
@@ -157,7 +152,7 @@ const AdminSidebar = ({
         },
         {
           name: "Notifications",
-          path: "/admin/notifications",
+          path: "/admin/notification",
           icon: <FaBellIcon size={20} />,
         },
       ],
@@ -180,7 +175,7 @@ const AdminSidebar = ({
         },
         {
           name: "Admin Users",
-          path: "/admin/admin-users",
+          path: "/admin/admin-user",
           icon: <FaUserShield size={20} />,
         },
       ],
@@ -466,9 +461,9 @@ const AdminSidebar = ({
                   "
                 >
                   <FaUser className="text-[#64748B] dark:text-[#94A3B8]" />
-                  <span className="text-base font-medium">
+                  <Link to ="/admin/admin-user" className="text-base font-medium">
                     My Profile
-                  </span>
+                  </Link>
                 </button>
 
                 <button
